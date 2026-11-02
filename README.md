@@ -17,17 +17,17 @@ Todos os comandos são executados **na raiz do projeto**, porque os CSVs são li
 python -m venv .venv
 .venv\Scripts\activate          # Windows  (Linux/Mac: source .venv/bin/activate)
 pip install -r requirements.txt
-
-python app/data.py              # só na primeira vez: gera data/interacoes_limpas.csv
 uvicorn app.main:app --reload
 ```
 
 - Swagger (documentação interativa): http://127.0.0.1:8000/docs
 - Testes automatizados: `pytest -q`
 
+Os dados que a API usa já vêm no repositório, então não é preciso rodar o `app/data.py` (veja [Dados](#dados)).
+
 ### Rodando com Docker
 
-Com o Docker Desktop aberto e o `data/interacoes_limpas.csv` já gerado, na raiz do projeto:
+Com o Docker Desktop aberto, na raiz do projeto:
 
 ```bash
 docker compose up --build
@@ -48,7 +48,7 @@ Para parar: `Ctrl+C` e depois `docker compose down`.
 
 O `app/data.py` remove as interações de alunos ou materiais que não existem nos cadastros e salva o resultado em `data/interacoes_limpas.csv`. Os ids das interações vão até 100.000 (alunos) e 50.000 (materiais), mas só existem 10.000 de cada. Por isso sobram **200.622** das 10 milhões de interações (2%).
 
-> O `data/interacoes.csv` tem 466 MB e passa do limite de 100 MB por arquivo do GitHub, por isso está no `.gitignore`. O arquivo limpo tem 9 MB.
+> O `data/interacoes.csv` tem 466 MB e passa do limite de 100 MB por arquivo do GitHub, por isso não está no repositório. O `data/interacoes_limpas.csv` (9 MB) já vem pronto. Para gerá-lo de novo, coloque o arquivo bruto em `data/` e rode `python app/data.py`.
 
 Outras características dos dados, que explicam os resultados das métricas:
 - **Alunos:** os 10.000 são só **8 perfis** repetidos.
