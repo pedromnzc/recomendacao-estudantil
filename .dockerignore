@@ -1,0 +1,17 @@
+# A venv do Windows não funciona no Linux do container (lá o pip instala tudo de novo)
+.venv/
+venv/
+
+# Caches do Python e do pytest
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# A API usa data/interacoes_limpas.csv; o arquivo bruto tem 466 MB
+data/interacoes.csv
+
+# Coisas que a API não precisa
+.git/
+.vscode/
+*.pdf
+.env

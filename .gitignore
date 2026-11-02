@@ -1,0 +1,20 @@
+# Ambiente virtual (cada um recria com: pip install -r requirements.txt)
+.venv/
+venv/
+
+# Cache do Python
+__pycache__/
+*.pyc
+
+# Cache do pytest
+.pytest_cache/
+
+# Configurações pessoais do editor
+.vscode/
+
+# Variáveis de ambiente / segredos
+.env
+
+# Interações brutas (466 MB): passam do limite de 100 MB por arquivo do GitHub.
+# A API usa data/interacoes_limpas.csv (9 MB), gerado por: python app/data.py
+data/interacoes.csv
